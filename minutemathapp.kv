@@ -1,0 +1,1881 @@
+#:import RiseInTransition kivy.uix.screenmanager.RiseInTransition
+ScreenManager: #Use ScreenManager to swipe screens 
+	transition: RiseInTransition()
+	#------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	Screen:
+		name: 'Welcome Screen'
+
+		canvas:
+
+
+			Rectangle:
+				source: 'mad_minute_image.jpg'
+				pos: self.pos
+				size: self.size
+	#---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name: 'Options Screen'
+
+		canvas:
+
+			Rectangle:
+				source: 'multi_color.jpg'
+				size: self.size
+				pos: self.pos
+
+		GridLayout:
+			rows: 4
+			cols: 1
+
+			Button:
+				text: 'Easy Math Level'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Easy Math Options'
+
+			Button: 
+				text: 'Intermediate Math Level'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Intermediate Math Options'
+
+			Button:
+				text: 'Expert Math Level'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Expert Math Options'
+
+			Button:
+				text:'About Page'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'About Screen'
+	#-------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name: 'Easy Math Options'
+
+		GridLayout:
+			rows: 5
+			cols: 1
+
+			Button:
+				text: 'Easy Addition'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Easy Addition Level'
+
+			Button:
+				text: 'Easy Subtraction'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Easy Subtraction Level'
+
+			Button:
+				text: 'Easy Multiplication'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Easy Multiplication Level'
+
+			Button:
+				text: 'Easy Division'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Easy Division Level'
+
+			Button:
+				text: 'Go Back'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Options Screen'
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name: 'Intermediate Math Options'
+
+		GridLayout:
+			rows: 5
+			cols: 1
+
+			Button:
+				text: 'Intermediate Addition'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Intermediate Addition Level'
+
+			Button:
+				text: 'Intermediate Subtraction'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Intermediate Subtraction Level'
+
+			Button:
+				text: 'Intermediate Multiplication'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Intermediate Multiplication Level'
+
+			Button:
+				text: 'Intermediate Division'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Intermediate Division Level'
+
+			Button:
+				text: 'Go Back'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Options Screen'
+	#--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name: 'Expert Math Options'
+
+		GridLayout:
+			rows: 5
+			cols: 1
+
+			Button:
+				text: 'Expert Addition'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Expert Addition Level'
+
+			Button:
+				text: 'Expert Subtraction'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Expert Subtraction Level'
+
+			Button:
+				text: 'Expert Multiplication'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Expert Multiplication Level'
+
+			Button:
+				text: 'Expert Division'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Expert Division Level'
+
+			Button:
+				text: 'Go Back'
+				background_normal: 'navy.png'
+				on_press: app.root.current = 'Options Screen'
+	#---------------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name: 'About Screen'
+
+		BoxLayout:
+			orientation: 'vertical'
+
+
+			TextInput:
+				text:'Welcome to Minute Math! The goal of this fun math game is to complete as many math problems as possible in one munute! You will be able to choose between three different difficulty levels. There is the easy level, intermediate level and expert level. You can select between addition, subtraction and multiplication. To start the timer press "start timer". In order to get a question press "Get Question". You will receive a question and then you enter an answer. Once you have entered your answer press "Check Answer". You will be told whether or not your answer is correct. If you want to change your answer before entering it press the "Clear" button. Once you check your answer and get the results press "Get Question" and start the process over again. Once your time has expired you will be able to enter 1 final question. Once you enter the final answer after the time has expired you will be updated as to what your final grade is. You can play again, or select another level or class of math problems.'
+				readonly: True 
+
+			Button:
+				text: 'Continue'
+				background_normal: 'navy.png'
+				size_hint: (.2, .2)
+				on_press: app.root.current = 'Options Screen'
+	
+
+
+
+
+
+	Screen:
+		name:'Easy Addition Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: easy_addition_question
+				text: ''
+
+			Label:
+				text: ''
+				id: easy_addition_user_answer
+
+			Label:
+				id: easy_addition_result
+				text: ''
+
+			Label
+				id: easy_addition_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: easy_addition_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button1()
+				
+				Button:
+					text: '2'
+					id: easy_addition_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button2()
+
+				Button: 
+					text: '3'
+					id: easy_addition_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button3()
+
+				Button:
+					text: '4'
+					id: easy_addition_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button4()
+
+				Button: 
+					text: '5'
+					id: easy_addition_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button5()
+
+				Button:
+					text: '6'
+					id: easy_addition_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button6()
+
+				Button:
+					text: '7'
+					id: easy_addition_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button7()
+
+				Button:
+					text: '8'
+					id: easy_addition_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button8()
+
+				Button: 
+					text: '9'
+					id: easy_addition_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button9()
+
+				Button:
+					text: '0'
+					id: easy_addition_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: easy_addition_enter_button
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: easy_addition_clear_button
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: easy_addition_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: easy_addition_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: easy_addition_timer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_addition_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: easy_addition_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Easy Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: easy_addition_score
+
+				Label:
+					text: 'Question Number:'
+					id: easy_addition_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: easy_addition_final_grade
+	#----------------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name:'Easy Subtraction Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: easy_subtraction_question
+				text: ''
+
+			Label:
+				text: ''
+				id: easy_subtraction_user_answer
+
+			Label:
+				id: easy_subtraction_result
+				text: ''
+
+			Label
+				id: easy_subtraction_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: easy_subtraction_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button1()
+				
+				Button:
+					text: '2'
+					id: easy_subtraction_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button2()
+
+				Button: 
+					text: '3'
+					id: easy_subtraction_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button3()
+
+				Button:
+					text: '4'
+					id: easy_subtraction_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button4()
+
+				Button: 
+					text: '5'
+					id: easy_subtraction_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button5()
+
+				Button:
+					text: '6'
+					id: easy_subtraction_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button6()
+
+				Button:
+					text: '7'
+					id: easy_subtraction_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button7()
+
+				Button:
+					text: '8'
+					id: easy_subtraction_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button8()
+
+				Button: 
+					text: '9'
+					id: easy_subtraction_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button9()
+
+				Button:
+					text: '0'
+					id: easy_subtraction_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: easy_subtraction_enter_button
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: easy_subtraction_clear_button
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: easy_subtraction_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: easy_subtraction_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: easy_subtraction_timer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_subtraction_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: easy_subtraction_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Easy Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: easy_subtraction_score
+
+				Label:
+					text: 'Question Number:'
+					id: easy_subtraction_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: easy_subtraction_final_grade
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name:'Easy Multiplication Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: easy_multiplication_question
+				text: ''
+
+			Label:
+				text: ''
+				id: easy_multiplication_user_answer
+
+			Label:
+				id: easy_multiplication_result
+				text: ''
+
+			Label
+				id: easy_multiplication_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: easy_multiplication_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button1()
+				
+				Button:
+					text: '2'
+					id: easy_multiplication_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button2()
+
+				Button: 
+					text: '3'
+					id: easy_multiplication_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button3()
+
+				Button:
+					text: '4'
+					id: easy_multiplication_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button4()
+
+				Button: 
+					text: '5'
+					id: easy_multiplication_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button5()
+
+				Button:
+					text: '6'
+					id: easy_multiplication_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button6()
+
+				Button:
+					text: '7'
+					id: easy_multiplication_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button7()
+
+				Button:
+					text: '8'
+					id: easy_multiplication_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button8()
+
+				Button: 
+					text: '9'
+					id: easy_multiplication_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button9()
+
+				Button:
+					text: '0'
+					id: easy_multiplication_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: easy_multiplication_enter_button
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: easy_multiplication_clear_button
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: easy_multiplication_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: easy_multiplication_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: easy_multiplication_timer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_multiplication_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: easy_multiplication_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Easy Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: easy_multiplication_score
+
+				Label:
+					text: 'Question Number:'
+					id: easy_multiplication_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: easy_multiplication_final_grade
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name:'Easy Division Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: easy_division_question
+				text: ''
+
+			Label:
+				text: ''
+				id: easy_division_user_answer
+
+			Label:
+				id: easy_division_result
+				text: ''
+
+			Label
+				id: easy_division_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: easy_division_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button1()
+				
+				Button:
+					text: '2'
+					id: easy_division_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button2()
+
+				Button: 
+					text: '3'
+					id: easy_division_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button3()
+
+				Button:
+					text: '4'
+					id: easy_division_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button4()
+
+				Button: 
+					text: '5'
+					id: easy_division_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button5()
+
+				Button:
+					text: '6'
+					id: easy_division_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button6()
+
+				Button:
+					text: '7'
+					id: easy_division_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button7()
+
+				Button:
+					text: '8'
+					id: easy_division_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button8()
+
+				Button: 
+					text: '9'
+					id: easy_division_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button9()
+
+				Button:
+					text: '0'
+					id: easy_division_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.easy_division_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: easy_division_enter_button
+					background_normal: 'navy.png'
+					on_press: app.easy_division_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: easy_division_clear_button
+					background_normal: 'navy.png'
+					on_press: app.easy_division_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: easy_division_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_division_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: easy_division_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.easy_division_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: easy_division_timer_button
+					background_normal: 'navy.png'
+					on_press: app.easy_division_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: easy_division_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Easy Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: easy_division_score
+
+				Label:
+					text: 'Question Number:'
+					id: easy_division_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: easy_division_final_grade
+	#----------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name:'Intermediate Addition Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: intermediate_addition_question
+				text: ''
+
+			Label:
+				text: ''
+				id: intermediate_addition_user_answer
+
+			Label:
+				id: intermediate_addition_result
+				text: ''
+
+			Label
+				id: intermediate_addition_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: intermediate_addition_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button1()
+				
+				Button:
+					text: '2'
+					id: intermediate_addition_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button2()
+
+				Button: 
+					text: '3'
+					id: intermediate_addition_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button3()
+
+				Button:
+					text: '4'
+					id: intermediate_addition_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button4()
+
+				Button: 
+					text: '5'
+					id: intermediate_addition_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button5()
+
+				Button:
+					text: '6'
+					id: intermediate_addition_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button6()
+
+				Button:
+					text: '7'
+					id: intermediate_addition_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button7()
+
+				Button:
+					text: '8'
+					id: intermediate_addition_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button8()
+
+				Button: 
+					text: '9'
+					id: intermediate_addition_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button9()
+
+				Button:
+					text: '0'
+					id: intermediate_addition_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: intermediate_addition_enter_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: intermediate_addition_clear_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: intermediate_addition_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: intermediate_addition_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: intermediate_addition_timer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_addition_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: intermediate_addition_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Intermediate Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: intermediate_addition_score
+
+				Label:
+					text: 'Question Number:'
+					id: intermediate_addition_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: intermediate_addition_final_grade
+	#----------------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name:'Intermediate Subtraction Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: intermediate_subtraction_question
+				text: ''
+
+			Label:
+				text: ''
+				id: intermediate_subtraction_user_answer
+
+			Label:
+				id: intermediate_subtraction_result
+				text: ''
+
+			Label
+				id: intermediate_subtraction_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: intermediate_subtraction_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button1()
+				
+				Button:
+					text: '2'
+					id: intermediate_subtraction_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button2()
+
+				Button: 
+					text: '3'
+					id: intermediate_subtraction_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button3()
+
+				Button:
+					text: '4'
+					id: intermediate_subtraction_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button4()
+
+				Button: 
+					text: '5'
+					id: intermediate_subtraction_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button5()
+
+				Button:
+					text: '6'
+					id: intermediate_subtraction_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button6()
+
+				Button:
+					text: '7'
+					id: intermediate_subtraction_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button7()
+
+				Button:
+					text: '8'
+					id: intermediate_subtraction_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button8()
+
+				Button: 
+					text: '9'
+					id: intermediate_subtraction_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button9()
+
+				Button:
+					text: '0'
+					id: intermediate_subtraction_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: intermediate_subtraction_enter_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: intermediate_subtraction_clear_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: intermediate_subtraction_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: intermediate_subtraction_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: intermediate_subtraction_timer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_subtraction_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: intermediate_subtraction_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Intermediate Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: intermediate_subtraction_score
+
+				Label:
+					text: 'Question Number:'
+					id: intermediate_subtraction_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: intermediate_subtraction_final_grade
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name:'Intermediate Multiplication Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: intermediate_multiplication_question
+				text: ''
+
+			Label:
+				text: ''
+				id: intermediate_multiplication_user_answer
+
+			Label:
+				id: intermediate_multiplication_result
+				text: ''
+
+			Label
+				id: intermediate_multiplication_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: intermediate_multiplication_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button1()
+				
+				Button:
+					text: '2'
+					id: intermediate_multiplication_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button2()
+
+				Button: 
+					text: '3'
+					id: intermediate_multiplication_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button3()
+
+				Button:
+					text: '4'
+					id: intermediate_multiplication_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button4()
+
+				Button: 
+					text: '5'
+					id: intermediate_multiplication_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button5()
+
+				Button:
+					text: '6'
+					id: intermediate_multiplication_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button6()
+
+				Button:
+					text: '7'
+					id: intermediate_multiplication_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button7()
+
+				Button:
+					text: '8'
+					id: intermediate_multiplication_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button8()
+
+				Button: 
+					text: '9'
+					id: intermediate_multiplication_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button9()
+
+				Button:
+					text: '0'
+					id: intermediate_multiplication_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: intermediate_multiplication_enter_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: intermediate_multiplication_clear_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: intermediate_multiplication_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: intermediate_multiplication_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: intermediate_multiplication_timer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_multiplication_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: intermediate_multiplication_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Intermediate Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: intermediate_multiplication_score
+
+				Label:
+					text: 'Question Number:'
+					id: intermediate_multiplication_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: intermediate_multiplication_final_grade
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	Screen:
+		name:'Intermediate Division Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: intermediate_division_question
+				text: ''
+
+			Label:
+				text: ''
+				id: intermediate_division_user_answer
+
+			Label:
+				id: intermediate_division_result
+				text: ''
+
+			Label
+				id: intermediate_division_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: intermediate_division_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button1()
+				
+				Button:
+					text: '2'
+					id: intermediate_division_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button2()
+
+				Button: 
+					text: '3'
+					id: intermediate_division_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button3()
+
+				Button:
+					text: '4'
+					id: intermediate_division_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button4()
+
+				Button: 
+					text: '5'
+					id: intermediate_division_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button5()
+
+				Button:
+					text: '6'
+					id: intermediate_division_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button6()
+
+				Button:
+					text: '7'
+					id: intermediate_division_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button7()
+
+				Button:
+					text: '8'
+					id: intermediate_division_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button8()
+
+				Button: 
+					text: '9'
+					id: intermediate_division_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button9()
+
+				Button:
+					text: '0'
+					id: intermediate_division_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: intermediate_division_enter_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: intermediate_division_clear_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: intermediate_division_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: intermediate_division_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: intermediate_division_timer_button
+					background_normal: 'navy.png'
+					on_press: app.intermediate_division_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: intermediate_division_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Intermediate Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: intermediate_division_score
+
+				Label:
+					text: 'Question Number:'
+					id: intermediate_division_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: intermediate_division_final_grade
+	#----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name:'Expert Addition Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: expert_addition_question
+				text: ''
+
+			Label:
+				text: ''
+				id: expert_addition_user_answer
+
+			Label:
+				id: expert_addition_result
+				text: ''
+
+			Label
+				id: expert_addition_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: expert_addition_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button1()
+				
+				Button:
+					text: '2'
+					id: expert_addition_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button2()
+
+				Button: 
+					text: '3'
+					id: expert_addition_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button3()
+
+				Button:
+					text: '4'
+					id: expert_addition_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button4()
+
+				Button: 
+					text: '5'
+					id: expert_addition_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button5()
+
+				Button:
+					text: '6'
+					id: expert_addition_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button6()
+
+				Button:
+					text: '7'
+					id: expert_addition_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button7()
+
+				Button:
+					text: '8'
+					id: expert_addition_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button8()
+
+				Button: 
+					text: '9'
+					id: expert_addition_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button9()
+
+				Button:
+					text: '0'
+					id: expert_addition_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: expert_addition_enter_button
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: expert_addition_clear_button
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: expert_addition_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: expert_addition_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: expert_addition_timer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_addition_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: expert_addition_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Expert Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: expert_addition_score
+
+				Label:
+					text: 'Question Number:'
+					id: expert_addition_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: expert_addition_final_grade
+	#----------------------------------------------------------------------------------------------------------------------------------------------------------
+	Screen:
+		name:'Expert Subtraction Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: expert_subtraction_question
+				text: ''
+
+			Label:
+				text: ''
+				id: expert_subtraction_user_answer
+
+			Label:
+				id: expert_subtraction_result
+				text: ''
+
+			Label
+				id: expert_subtraction_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: expert_subtraction_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button1()
+				
+				Button:
+					text: '2'
+					id: expert_subtraction_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button2()
+
+				Button: 
+					text: '3'
+					id: expert_subtraction_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button3()
+
+				Button:
+					text: '4'
+					id: expert_subtraction_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button4()
+
+				Button: 
+					text: '5'
+					id: expert_subtraction_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button5()
+
+				Button:
+					text: '6'
+					id: expert_subtraction_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button6()
+
+				Button:
+					text: '7'
+					id: expert_subtraction_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button7()
+
+				Button:
+					text: '8'
+					id: expert_subtraction_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button8()
+
+				Button: 
+					text: '9'
+					id: expert_subtraction_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button9()
+
+				Button:
+					text: '0'
+					id: expert_subtraction_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: expert_subtraction_enter_button
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: expert_subtraction_clear_button
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: expert_subtraction_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: expert_subtraction_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: expert_subtraction_timer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_subtraction_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: expert_subtraction_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Expert Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: expert_subtraction_score
+
+				Label:
+					text: 'Question Number:'
+					id: expert_subtraction_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: expert_subtraction_final_grade
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	Screen:
+		name:'Expert Multiplication Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: expert_multiplication_question
+				text: ''
+
+			Label:
+				text: ''
+				id: expert_multiplication_user_answer
+
+			Label:
+				id: expert_multiplication_result
+				text: ''
+
+			Label
+				id: expert_multiplication_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: expert_multiplication_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button1()
+				
+				Button:
+					text: '2'
+					id: expert_multiplication_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button2()
+
+				Button: 
+					text: '3'
+					id: expert_multiplication_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button3()
+
+				Button:
+					text: '4'
+					id: expert_multiplication_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button4()
+
+				Button: 
+					text: '5'
+					id: expert_multiplication_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button5()
+
+				Button:
+					text: '6'
+					id: expert_multiplication_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button6()
+
+				Button:
+					text: '7'
+					id: expert_multiplication_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button7()
+
+				Button:
+					text: '8'
+					id: expert_multiplication_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button8()
+
+				Button: 
+					text: '9'
+					id: expert_multiplication_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button9()
+
+				Button:
+					text: '0'
+					id: expert_multiplication_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: expert_multiplication_enter_button
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: expert_multiplication_clear_button
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: expert_multiplication_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: expert_multiplication_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: expert_multiplication_timer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_multiplication_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: expert_multiplication_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Expert Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: expert_multiplication_score
+
+				Label:
+					text: 'Question Number:'
+					id: expert_multiplication_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: expert_multiplication_final_grade
+	#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	Screen:
+		name:'Expert Division Level'
+
+
+		BoxLayout:
+			orientation: 'vertical'
+
+			Label:
+				id: expert_division_question
+				text: ''
+
+			Label:
+				text: ''
+				id: expert_division_user_answer
+
+			Label:
+				id: expert_division_result
+				text: ''
+
+			Label
+				id: expert_division_time
+				text: 'Time: '
+
+			GridLayout:
+				rows: 5
+				cols: 4
+				size: (200, 50)
+				spacing: 10
+				size_hint: (1, None)
+				height: 90
+
+				Button:
+					id: expert_division_calc_button_1
+					text: '1'
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button1()
+				
+				Button:
+					text: '2'
+					id: expert_division_calc_button_2
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button2()
+
+				Button: 
+					text: '3'
+					id: expert_division_calc_button_3
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button3()
+
+				Button:
+					text: '4'
+					id: expert_division_calc_button4
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button4()
+
+				Button: 
+					text: '5'
+					id: expert_division_calc_button5
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button5()
+
+				Button:
+					text: '6'
+					id: expert_division_calc_button6
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button6()
+
+				Button:
+					text: '7'
+					id: expert_division_calc_button7
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button7()
+
+				Button:
+					text: '8'
+					id: expert_division_calc_button8
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button8()
+
+				Button: 
+					text: '9'
+					id: expert_division_calc_button9
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button9()
+
+				Button:
+					text: '0'
+					id: expert_division_calc_button0
+					background_normal: 'navy.png'
+					on_press: app.expert_division_button0()
+
+				Button: 
+					text: 'Check Final Grade'
+					id: expert_division_enter_button
+					background_normal: 'navy.png'
+					on_press: app.expert_division_check_final_grade()
+
+				Button: 
+					text: 'Clear'
+					id: expert_division_clear_button
+					background_normal: 'navy.png'
+					on_press: app.expert_division_clear_button()
+
+				Button: 
+					text: 'Check Answer'
+					id: expert_division_check_answer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_division_check_answer()
+
+				Button:
+					text: 'Get Question'
+					id: expert_division_next_question_button
+					background_normal: 'navy.png'
+					on_press: app.expert_division_addnums()
+
+				Button:
+					text: 'Start Timer'
+					id: expert_division_timer_button
+					background_normal: 'navy.png'
+					on_press: app.expert_division_start_timer()
+
+				Button:
+					text: 'Go Back'
+					id: expert_division_go_back_button
+					background_normal: 'navy.png'
+					on_press: app.root.current = 'Expert Math Options'
+
+			BoxLayout:
+				orientation: 'horizontal'
+
+				Label:
+					text: 'Score:'
+					id: expert_division_score
+
+				Label:
+					text: 'Question Number:'
+					id: expert_division_question_number
+
+				Label:
+					text: 'Final Grade:'
+					id: expert_division_final_grade
